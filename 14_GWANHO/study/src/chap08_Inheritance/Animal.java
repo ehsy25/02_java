@@ -1,4 +1,4 @@
-package chap09_polymorphism.section01;
+package chap08_Inheritance;
 
 public class Animal {
 
