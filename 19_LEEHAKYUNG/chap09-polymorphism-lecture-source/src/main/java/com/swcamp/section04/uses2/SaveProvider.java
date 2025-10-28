@@ -1,0 +1,6 @@
+package com.swcamp.section04.uses2;
+
+public interface SaveProvider {
+
+    boolean save(String data);  // 추상 메소드
+}
