@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class ProductController {
     private ProductDTO[] proudctDTO = null;
-    public int count = 0;
+    public static int count = 0;
     Scanner sc = new Scanner(System.in);
 
     public ProductController() {
@@ -49,7 +49,7 @@ public class ProductController {
         double tax = Double.parseDouble(sc.nextLine());
 
         ProductDTO productDTO = new ProductDTO(count, name, price, tax);
-        proudctDTO[count++] = productDTO;
+        proudctDTO[productDTO.getpId()] = productDTO;
     }
 
     public void productPrint() {
