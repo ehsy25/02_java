@@ -15,8 +15,8 @@ public class Application5 {
         *      1234 x 8 + 4 = 9876
         *     12345 x 8 + 5 = 98765
         *
-        *             1 x 8 + 1 = 9
-        *            12 x 8 + 2 = 98
+        *             1 x 8 + 1 = 9 i = 1, i * 10의 i-1승
+        *            12 x 8 + 2 = 98 i = 2,
         *           123 x 8 + 3 = 987
         *          1234 x 8 + 4 = 9876
         *         12345 x 8 + 5 = 98765
@@ -27,8 +27,13 @@ public class Application5 {
         * 정수 하나를 입력하세요 : 9
         * */
     Scanner sc = new Scanner(System.in);
+        System.out.print("정수 하나를 입력하세요 : ");
     int a = sc.nextInt();
-    for (int = 0; i<10; i++)
+    for (int i = 1; i<=a; i++) {
+        for  (int j = 1; j<= i; j++) {
+            System.out.println();
+        }
+        }
         
 
     }

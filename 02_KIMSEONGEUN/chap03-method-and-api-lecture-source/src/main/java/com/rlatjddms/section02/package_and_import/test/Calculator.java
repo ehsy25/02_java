@@ -1,4 +1,4 @@
-package com.rlatjddms.section01.method;
+package com.rlatjddms.section02.package_and_import.test;
 
 public class Calculator {
 
