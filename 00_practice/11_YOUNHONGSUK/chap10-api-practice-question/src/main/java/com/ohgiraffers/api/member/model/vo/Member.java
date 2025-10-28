@@ -11,7 +11,6 @@ public class Member {
     private int weight;
     private String date;
 
-
     public Member() {
     }
 
@@ -24,40 +23,40 @@ public class Member {
     }
 
     public String information(){
-        Member[] ma = new  Member[3];
 
+        //기본 제공 데이터
         String data = "1,김연아,165,47,19900905|2,양세형,167,60,19850818|3,김래원,182,80,19810319";
-
+        //스트링 | 기준으로 자르기
         StringTokenizer st = new  StringTokenizer(data, "|");
 
+        //잘라진 스트링 array에 집어넣기
         String[] sa = new String[st.countTokens()];
-
         int count = 0;
+        /*stringTokenizer는 리스트를 만들고, 리스트의 포인터는 자동으로 넘어가지 않으니
+         *hasmoreTokens()로 다음 토큰 있는지 확인하면서 다음 토큰으로 넘어가기
+         */
         while(st.hasMoreTokens()){
             sa[count++] = st.nextToken();
         }
 
-        //System.out.println(Arrays.toString(sa));
+        //각 멤버를 받을 array 생성
+        Member[] ma = new  Member[3];
 
-        String[] fields = new String[15];
-        int count2 = 0;
-        for(int i=0;i<sa.length;i++){
+        //멤버의 수 만큼 진행하기 위해 sa.length를 조건으로 사용
+        for(int i = 0; i < sa.length; i++){
+            //sa[i]에는 각 멤버의 모든 정보가 쉼표로 나눠져서 들어있다
+            // 쉼표를 기준으로 토큰을 나누고, 나누어진 스트링에서
+            // 필요한 정보를 멤버의 생성자에 넘겨준다
             StringTokenizer st2 = new StringTokenizer(sa[i], ",");
-            for(int j=0;j<fields.length;j++){
-                if(st2.hasMoreTokens()){
-                    fields[count2++] = st2.nextToken();
-                }
-            }
+
+            int number = Integer.parseInt(st2.nextToken());
+            String username = st2.nextToken();
+            int h = Integer.parseInt(st2.nextToken());
+            int w = Integer.parseInt(st2.nextToken());
+            String birthday = st2.nextToken();
+
+            ma[i] = new Member(number, username, h, w, birthday);
         }
-
-        //System.out.println(Arrays.toString(fields));
-
-        ma[0] = new Member(Integer.valueOf(fields[0]), fields[1], Integer.valueOf(fields[2]),
-                Integer.valueOf(fields[3]), fields[4]);
-        ma[1] = new Member(Integer.valueOf(fields[5]), fields[6], Integer.valueOf(fields[7]),
-                Integer.valueOf(fields[8]), fields[9]);
-        ma[2] = new Member(Integer.valueOf(fields[10]), fields[11], Integer.valueOf(fields[12]),
-                Integer.valueOf(fields[13]), fields[14]);
 
         for(int i=0;i<ma.length;i++){
             System.out.println(ma[i].getNum());
@@ -67,10 +66,7 @@ public class Member {
             System.out.println(ma[i].getDate());
             System.out.println("========================");
         }
-
-
-        return "";
-
+        return Arrays.toString(ma);
     }
 
     public int getNum() {
@@ -93,6 +89,3 @@ public class Member {
         return date;
     }
 }
-
-
-
