@@ -11,10 +11,6 @@ public class Run {
 
         String[] strArr = str.split("\\|");
 
-        for (String s : strArr) {
-            System.out.println("s = " + s);
-        }
-        System.out.println(strArr.length);
 
         Member[] members = new Member[strArr.length];
         for (int i = 0; i < strArr.length; i++) {
