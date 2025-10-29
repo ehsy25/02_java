@@ -8,9 +8,9 @@ public class Member {
     private String memberName;
     private int height;
     private int weight;
-    private String birth;
+    private LocalDate birth;
 
-    public Member(int memberNo, String memberName, int height, int weight, String birth) {
+    public Member(int memberNo, String memberName, int height, int weight, LocalDate birth) {
         this.memberNo = memberNo;
         this.memberName = memberName;
         this.height = height;
