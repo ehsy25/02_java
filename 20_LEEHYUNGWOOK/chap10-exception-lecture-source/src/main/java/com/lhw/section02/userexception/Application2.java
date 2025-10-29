@@ -5,7 +5,7 @@ import com.lhw.section02.userexception.exception.NegativeException;
 import com.lhw.section02.userexception.exception.NotEnoughMoneyException;
 import com.lhw.section02.userexception.exception.PriceNegativeException;
 
-public class Application {
+public class Application2 {
 
     public static void main(String[] args) {
 
@@ -16,22 +16,21 @@ public class Application {
 //            exceptionTest.checkEnoughMoney(-1000, 1000);
             /*잔액이 음수*/
 //            exceptionTest.checkEnoughMoney(1000, -1000);
-            /*잔액<가격*/
-            exceptionTest.checkEnoughMoney(1000, 500);
-            /*예외 상황별로 catch블럭을 따로 작성해서 처리할 수도 있고, 상위 타입의 Exception*/
-/*        } catch (Exception ex) { //아래의 내용을 상위 클래스로 받아줄 수 있다.
-            ex.printStackTrace();
-        }*/
-        // 아래 내용은 좀 더 상세하게 나누어서 작업해주는 부분이다.
-        } catch (PriceNegativeException e) {
-            e.printStackTrace();
-        } catch (MoneyNegativeException e) {
+//            exceptionTest.checkEnoughMoney(1000, 500);
+            /*정상 동작*/
+            exceptionTest.checkEnoughMoney(1000, 50000);
+
+            /*
+            * |: 동일한 레벨의 다른 타입의 예외를 하나의 Catch블록에서 처리할 수 있다.
+            * 단, 상위 타입의 Exception과 하위 타입의 Exception은 함께 서술 될 수 없다.
+            * */
+        } catch (PriceNegativeException | MoneyNegativeException | NotEnoughMoneyException e) {
             System.out.println(e.getMessage());
-        } catch (NotEnoughMoneyException e) {
-            System.out.println(e.getMessage());;
-        } catch (NegativeException e) {
-            System.out.println(e.getMessage());
+        } finally {
+            /*Try 구문이 정상적으로 동작해도 실행하고 exception 발생해도 동작한다. */
+            System.out.println("Finally 구문 동작");
         }
+        System.out.println("프로그램을 종료합니다.");
 
     }
 }
