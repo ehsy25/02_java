@@ -2,6 +2,12 @@ package com.ohgiraffers.api.hair.run;
 
 import com.ohgiraffers.api.hair.model.dto.User;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
 public class App {
 
     public static void main(String[] args) {
@@ -113,9 +119,50 @@ public class App {
 
         User[] arr1 =  new User[arr.length-1];
         for(int i = 1; i < arr.length; i++){
+            User user = null;
             String[] arr2 =  arr[i].split(",");
+            int id = Integer.parseInt(arr2[0]);
+            String firstName = arr2[1];
+            String lastName = arr2[2];
+            String email = arr2[3];
+            String gender = arr2[4];
 
-            arr1[i-1] = new User(arr2[0],arr2[1],arr2[2],arr2[3],arr2[4],arr2[5],arr2[6],arr2[7],arr2[8]);
+            int year;
+            int month;
+            int day;
+            LocalDate birthday = null;
+            String[] birthdaySplit = arr2[5].split("[-/]");
+            if(birthdaySplit.length == 3) {
+                year = Integer.parseInt(birthdaySplit[0]);
+                 month = Integer.parseInt(birthdaySplit[1]);
+                 day = Integer.parseInt(birthdaySplit[2]);
+                birthday = LocalDate.of(year, month, day);
+            }
+
+            String[] reservationDateSplit = arr2[6].split("[-/]");
+            year = Integer.parseInt(reservationDateSplit[0]);
+            month = Integer.parseInt(reservationDateSplit[1]);
+            day = Integer.parseInt(reservationDateSplit[2]);
+            LocalDate reservationDate = LocalDate.of(year, month, day);
+
+            String[] reservationTimeSplit = arr2[7].split("[:]");
+            int hours = Integer.parseInt(reservationTimeSplit[0]);
+            int minutes = Integer.parseInt(reservationTimeSplit[1]);
+            LocalTime reservationTime = LocalTime.of(hours, minutes);
+
+            String[] createAtSpilit = arr2[8].split("[T]");
+            String[] date = createAtSpilit[0].split("-");
+            String[] time = createAtSpilit[1].split(":");
+            year = Integer.parseInt(date[0]);
+            month = Integer.parseInt(date[1]);
+            day = Integer.parseInt(date[2]);
+
+            hours = Integer.parseInt(time[0]);
+            minutes = Integer.parseInt(time[1]);
+
+            LocalDateTime createAt = LocalDateTime.of(year,month,day,hours,minutes);
+            user = new User(id,firstName,lastName,email,gender,birthday,reservationDate,reservationTime,createAt);
+            arr1[i-1] = user;
         }
 
         for (User user : arr1) {
