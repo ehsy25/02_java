@@ -11,10 +11,10 @@ public class Run {
     public void test() {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("a : ");
+        System.out.print("1에서 100사이의 정수를 하나 입력하세요 : ");
         int a = Integer.parseInt(sc.nextLine());
 
-        System.out.print("b : ");
+        System.out.print("1에서 100사이의 정수를 하나 입력하세요 : ");
         int b = Integer.parseInt(sc.nextLine());
 
         try {
