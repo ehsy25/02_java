@@ -63,6 +63,7 @@ public class LibraryMenu {
     public void selectAll() {
         Book[] bList = lm.selectAll();
         for (Book b : bList) {
+            System.out.println(b.toString());
             System.out.println(b.getTitle() + " / " + b.getAuthor() + " / " + b.getPublisher());
         }
     }
