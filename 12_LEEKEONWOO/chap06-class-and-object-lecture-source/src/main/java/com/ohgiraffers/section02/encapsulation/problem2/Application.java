@@ -20,6 +20,7 @@ public class Application {
 
         Monster m2 = new Monster();
 //        m2.name = "뿌꾸";
+        m2.setInfo("뿌꾸");
         m2.hp = -200;
 //        System.out.println("m2.name = " + m2.name);
         System.out.println("m2.hp = " + m2.hp);

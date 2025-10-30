@@ -1,0 +1,33 @@
+package com.ohgiraffers.section05.time;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
+public class Application5 {
+    public static void main(String[] args) {
+        String timeNow = "14:05:10";
+        String dateNow = "2025-10-29";
+        LocalTime localTime = LocalTime.parse(timeNow);
+        LocalDate localDate = LocalDate.parse(dateNow);
+        LocalDateTime localDateTime = LocalDateTime.parse(dateNow + "T" + timeNow);
+
+        System.out.println("localTime : " + localTime);
+        System.out.println("localDate : " + localDate);
+        System.out.println("localDateTime : " + localDateTime);
+
+        dateNow = "221004";
+        timeNow = "14-05-10";
+        System.out.println("Pattern = " + LocalDate.parse(dateNow, DateTimeFormatter.ofPattern("yyMMdd")));
+        System.out.println("Pattern = " + LocalTime.parse(timeNow, DateTimeFormatter.ofPattern("HH-mm-ss"))); //대문자HH는 24시, 소문자hh는 12시
+        LocalDate localDate1 = LocalDate.now();
+        LocalTime localtime1 = LocalTime.now();
+
+        String dateFormat = localDate1.format(DateTimeFormatter.ofPattern("yyyy MM-dd")); //포맷을 내가 원하는대로
+        String timeFormat = localtime1.format(DateTimeFormatter.ofPattern("HH시 mm분 ss초"));
+        System.out.println("dateFormat = " + dateFormat);
+        System.out.println("timeFormat = " + timeFormat);
+
+    }
+}
