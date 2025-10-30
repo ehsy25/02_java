@@ -115,28 +115,77 @@ public class App {
                 100,Aurie,Goodoune,agoodoune2r@bbb.org,Genderfluid,2000/11/19,2024-04-12,12:11,2010-07-13T02:29:19
                 """;
 
-        String[] infos = data.split("\n");
+//        String[] infos = data.split("\n");
+//
+//        User[] users = new User[infos.length];
+//        for (int i = 1; i < users.length; i++) {
+//            String[] part = infos[i].split(",");
+//
+//            int id = Integer.parseInt(part[0]);
+//            String first_name = part[1];
+//            String last_name = part[2];
+//            String email = part[3];
+//            String gender = part[4];
+//            LocalDate birthday = toDate(part[5], "/");
+//            LocalDate reservation_date = toDate(part[6], "-");
+//            LocalTime reservation_time = toTime(part[7], ":");
+//            LocalDateTime created_at = toDateTime(part[8], "T");
+//
+//            users[i] = new User(id, first_name, last_name, email, gender, birthday, reservation_date, reservation_time, created_at);
+//        }
+//
+//        for(int i = 1; i < users.length; i++) {
+//            System.out.println(users[i].toString());
+//        }
 
-        User[] users = new User[infos.length];
-        for (int i = 1; i < users.length; i++) {
-            String[] part = infos[i].split(",");
+        StringTokenizer infos = new StringTokenizer(data, "\n");
+        infos.nextToken();
 
-            int id = Integer.parseInt(part[0]);
-            String first_name = part[1];
-            String last_name = part[2];
-            String email = part[3];
-            String gender = part[4];
-            LocalDate birthday = toDate(part[5], "/");
-            LocalDate reservation_date = toDate(part[6], "-");
-            LocalTime reservation_time = toTime(part[7], ":");
-            LocalDateTime created_at = toDateTime(part[8], "T");
+        User[] users = new User[infos.countTokens()];
+        int userCount = 0;
+        for(int i = 0; i < users.length; i++) {
+            String info = infos.nextToken();
 
-            users[i] = new User(id, first_name, last_name, email, gender, birthday, reservation_date, reservation_time, created_at);
+            StringTokenizer parts = new StringTokenizer(info, ",");
+            int count = parts.countTokens();
+            if(count == 8) {
+                users[userCount++] = planA(parts);
+            } else {
+                users[userCount++] = planB(parts);
+            }
         }
 
-        for(int i = 1; i < users.length; i++) {
+        for(int i = 0; i < users.length; i++) {
             System.out.println(users[i].toString());
         }
+    }
+
+    private static User planA(StringTokenizer st) {
+        int id = Integer.parseInt(st.nextToken());
+        String first_name = st.nextToken();
+        String last_name = st.nextToken();
+        String email = st.nextToken();
+        String gender = st.nextToken();
+        LocalDate birthday = null;
+        LocalDate reservation_date = toDate(st.nextToken(), "-");
+        LocalTime reservation_time = toTime(st.nextToken(), ":");
+        LocalDateTime created_at = toDateTime(st.nextToken(), "T");
+
+        return new User(id, first_name, last_name, email, gender, birthday, reservation_date, reservation_time, created_at);
+    }
+
+    private static User planB(StringTokenizer st) {
+        int id = Integer.parseInt(st.nextToken());
+        String first_name = st.nextToken();
+        String last_name = st.nextToken();
+        String email = st.nextToken();
+        String gender = st.nextToken();
+        LocalDate birthday = toDate(st.nextToken(), "/");
+        LocalDate reservation_date = toDate(st.nextToken(), "-");
+        LocalTime reservation_time = toTime(st.nextToken(), ":");
+        LocalDateTime created_at = toDateTime(st.nextToken(), "T");
+
+        return new User(id, first_name, last_name, email, gender, birthday, reservation_date, reservation_time, created_at);
     }
 
     private static LocalDate toDate(String str, String delimiter) {
