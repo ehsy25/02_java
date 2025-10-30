@@ -4,17 +4,10 @@ import java.util.Scanner;
 
 public class ExampleTest {
 
+    public void evenOdd(int value) {
+        String result = (value % 2 == 0)? "짝수입니다." : "홀수입니다.";
 
-public void evenOdd(int value){
-    Scanner sc = new Scanner(System.in);
-
-    System.out.println("정수를 입력하세요 : ");
-    int input = sc.nextInt();
-
-    String result = (input % 2 == 0)? "짝수입니다.": "홀수입니다.";
-
-    System.out.println(result);
-
+        System.out.println(result);
 }
     /*
     메소드명 : evenOdd(int value)
@@ -36,7 +29,7 @@ public void evenOdd(int value){
     * */
     public void findMax(int first, int second) {
         int max = (first > second) ? first : second;
-        System.out.println("더 큰수는 " + max + "입니다.");
+        System.out.println("더 큰 수는 " + max + "입니다.");
 }
     /*
     * 메소드명 randomMathQuiz(int num1, int num2)
@@ -53,7 +46,9 @@ public void evenOdd(int value){
     * */
 
     public void randomMathQuiz() {
+
         Scanner sc = new Scanner(System.in);
+
          int randomNum1 = (int) (Math.random()*10)+1;
          int randomNum2 = (int) (Math.random()*10)+1;
          int total = randomNum1 + randomNum2;

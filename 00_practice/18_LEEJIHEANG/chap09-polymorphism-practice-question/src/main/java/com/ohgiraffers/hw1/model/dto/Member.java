@@ -1,19 +1,20 @@
 package com.ohgiraffers.hw1.model.dto;
 
 public class Member {
+
     private String name; // 회원명
     private int age;     // 회원나이
     private char gender; // 성별
     private int couponCount = 0; // 요리학원쿠폰개수 = 0
 
     public Member() {
+
     }
 
-    public Member(String name, int age, char gender, int couponCount) {
+    public Member(String name, int age, char gender) {
         this.name = name;
         this.age = age;
         this.gender = gender;
-        this.couponCount = couponCount;
     }
 
     public String getName() {
@@ -47,4 +48,10 @@ public class Member {
     public void setCouponCount(int couponCount) {
         this.couponCount = couponCount;
     }
+
+    @Override
+    public String toString() {
+        return "Member [name=" + name + ", age=" + age + ", gender=" + gender + ", couponCount=" + couponCount + "]";
+    }
 }
+

@@ -1,6 +1,6 @@
 package com.ohgiraffers.operatorPractice;
 
-public class Application1o {
+public class Application1 {
 
     public static void main(String[] args) {
 
@@ -16,14 +16,13 @@ public class Application1o {
          * */
 
         int num1 = 9;
-        int num2 = 10;
         String result1 = (num1 % 2 == 0)? "짝수다.": "홀수다.";
-        String result2 = (num2 % 2 == 0)? "짝수다.": "홀수다.";
         System.out.println("9는 " + result1);
-        System.out.println("10은 " + result2);
-        int a = 22;
 
-        System.out.println((a%2==0)?"짝수다":"홀수다");
+        int num2 = 10;
+        String result2 = (num2 % 2 == 1)? "홀수다.": "짝수다.";
+        System.out.println("10은 " + result2);
+
 
     }
 }
