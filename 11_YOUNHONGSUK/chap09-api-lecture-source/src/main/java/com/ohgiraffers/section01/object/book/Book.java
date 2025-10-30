@@ -1,17 +1,21 @@
-package com.E.section01.object;
+package com.ohgiraffers.section01.object.book;
 
 import java.util.Objects;
 
 public class Book {
-
+    /* 필드 선언 */
     private int number;
     private String title;
     private String author;
     private int price;
 
+    /* 기본생성자 */
     public Book() {
+        super();
     }
+    /* 모든 필드를 초기화하는 생성자 */
 
+    /* getter & setter */
     public Book(int number, String title, String author, int price) {
         this.number = number;
         this.title = title;
@@ -50,29 +54,30 @@ public class Book {
     public void setPrice(int price) {
         this.price = price;
     }
-
-    //object의 toString 오버라이딩
+    /* 1. toString 오버라이딩 */
     @Override
     public String toString() {
-        return "Book{" +
-                "number=" + number +
-                ", title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", price=" + price +
-                '}';
+        return "[" +
+                "number= " + number +
+                ", title= '" + title + '\'' +
+                ", author= '" + author + '\'' +
+                ", price= " + price +
+                ']';
     }
 
-//    //2.eqauls 오버라이딩
+    /* 2. equals() 오버라이딩 */
 //    @Override
-//    public boolean equals(Object o){
-//        if(this == o){
+//    public boolean equals(Object obj) {
+//
+//        if (this == obj) {
 //            return true;
 //        }
-//        if(o == null){
+//
+//        if (obj == null) {
 //            return false;
 //        }
 //
-//        Book other = (Book) o;
+//        Book other = (Book) obj;
 //
 //        if(this.number != other.number){
 //            return false;
@@ -82,18 +87,16 @@ public class Book {
 //            if(other.title != null){
 //                return false;
 //            }
-//            else if (!this.title.equals(other.title)){
-//                return false;
-//            }
+//        } else if(!this.title.equals(other.title)){
+//            return false;
 //        }
 //
 //        if(this.author == null){
 //            if(other.author != null){
 //                return false;
 //            }
-//            else if (!this.author.equals(other.author)){
-//                return false;
-//            }
+//        } else if(!this.author.equals(other.author)){
+//            return false;
 //        }
 //
 //        if(this.price != other.price){
@@ -103,18 +106,18 @@ public class Book {
 //        return true;
 //    }
 //
-//    /*3. hashCode() 오버라이딩*/
-//
+//    /* 3. hashCode() 오버라이딩 */
 //    @Override
 //    public int hashCode() {
-//        /*곱셈연산을 누적시켜야하기 때문에 0이 아닌 값으로 초기화*/
+//        /* 곱셈연산을 누적시켜야하기 때문에 0이 아닌 값으로 초기화 */
 //        int result = 1;
 //
-//        /*필드마다 곱해줄 소수값을 선언
-//        * 31 (중복을 최소화 해줘서 자주 사용 됨)
-//        *31은 소수이기 때문에 연산 시 동일한 hashCode값이 나오지 않을 확률을 증가시킨다
-//        * */
+//        /*
+//        필드마다 곱해줄 소수값을 선언
+//        31은 소수이기 때문에 연산 시 동일한 hashCode값이 나오지 않을 확률을 증가시킨다.
+//        */
 //        final int PRIME = 31;
+//
 //        result = PRIME * result + this.number;
 //        result = PRIME * result + this.title.hashCode();
 //        result = PRIME * result + this.author.hashCode();
