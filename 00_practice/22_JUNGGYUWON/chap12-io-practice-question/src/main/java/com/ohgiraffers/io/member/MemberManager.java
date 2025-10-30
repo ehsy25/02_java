@@ -4,56 +4,67 @@ import java.io.*;
 
 public class MemberManager {
 
-    private Member[] members = null;
-
+    private Member[] members;
 
     public void readMembers() {
         ObjectInputStream ois = null;
-        int count = 0;
-
-        try{
-            ois = new ObjectInputStream(
-                    new BufferedInputStream(
-                            new FileInputStream("src/main/java/com/ohgiraffers/io/member/member.ser")
-                    )
-            );
-            while(true){
-                System.out.println(ois.readObject());
-                count++;
-            }
-        }
-        catch(FileNotFoundException e){
-            System.out.println("File not found");
-        }
-        catch (IOException e){
-            this.members = new Member[++count];
-
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void addMember(Member member) {
-
-         ObjectOutputStream objOut = null;
-        try {
-            objOut = new ObjectOutputStream(
-                    new BufferedOutputStream(
-                            new FileOutputStream("src/main/java/com/ohgiraffers/io/member/member.ser")));
-            objOut.writeObject(member);
-            objOut.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        finally {
+        boolean exists = new File("src/main/java/com/ohgiraffers/io/member/member.ser").exists();
+        if (exists) {
             try {
-                if(objOut != null){
-                    objOut.close();
+                ois = new ObjectInputStream(
+                        new BufferedInputStream(
+                                new FileInputStream("src/main/java/com/ohgiraffers/io/member/member.ser")
+                        )
+                );
+                while(true) {
+                    members = (Member[]) ois.readObject();
                 }
+
+            } catch (EOFException e) {
+                for (Member member : members) {
+                    System.out.println(member.toString());
+                }
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
 
+    }
+
+    public void addMember(Member member) {
+        Member[] arr ;
+        ObjectOutputStream oos = null;
+        if(members == null){
+            arr = new Member[]{member};
+        }else {
+            arr = new Member[members.length+1];
+
+            for (int i = 0; i < members.length; i++) {
+                arr[i] = members[i];
+            }
+            arr[members.length] = member;
+        }
+        try {
+            oos = new ObjectOutputStream(
+                    new BufferedOutputStream(
+                            new FileOutputStream("src/main/java/com/ohgiraffers/io/member/member.ser")
+                    )
+            );
+
+            oos.writeObject(arr);
+            oos.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (oos != null) {
+                    oos.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
