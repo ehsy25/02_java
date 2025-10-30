@@ -1,4 +1,8 @@
 package com.rlatjddms.section02.userexception.exception;
 
-public class NotEnoughMenryException {
+public class NotEnoughMoneyException extends Exception {
+
+    public NotEnoughMoneyException(String message) {
+        super(message);
+    }
 }

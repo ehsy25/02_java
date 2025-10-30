@@ -1,4 +1,8 @@
-package com.rlatjddms.section02.userexception;
+package com.rlatjddms.section02.userexception.exception;
 
-public class MoneyNegativeException {
+public class MoneyNegativeException extends NegativeException {
+
+    public MoneyNegativeException(String message) {
+        super(message);
+    }
 }
