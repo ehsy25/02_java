@@ -1,6 +1,6 @@
 package com.ohgiraffers.operatorPractice;
 
-public class Application3o {
+public class Application3 {
 
     public static void main(String[] args) {
 

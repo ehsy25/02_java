@@ -12,13 +12,13 @@ public class Application2 {
          * 면적 : 455.0
          * 둘레 : 97.8
          *  */
-        double width = 12.5;
-        double height = 36.4;
-        double area = width * height;
-        double round = (width + height) * 2;
+        double width = 12.5; // 너비
+        double height = 36.4; // 높이
+        double area = width * height;  // 면적
+        double round = (width + height) * 2;  // 둘레
 
-        System.out.println("둘레 = " + area);
-        System.out.println("면적 = " + round);
+        System.out.println("면적 = " + area);
+        System.out.println("둘레 = " + round);
 
 
     }
