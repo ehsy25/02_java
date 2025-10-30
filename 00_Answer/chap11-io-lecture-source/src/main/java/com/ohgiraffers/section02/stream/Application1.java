@@ -1,5 +1,6 @@
 package com.ohgiraffers.section02.stream;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -39,7 +40,26 @@ public class Application1 {
         try {
            fin = new FileInputStream("src/main/java/com/ohgiraffers/section02/stream/testInputStream.txt");
 
+           int value;
+           // read() : 파일에 기록된 값을 순차적으로 읽어오고 더 이상 읽을 데이터가 없을 경우 -1을 반환
+//           while((value = fin.read()) != -1){
+//               System.out.println((char) value);
+//           }
+
+            File readFile = new File("src/main/java/com/ohgiraffers/section02/stream/testInputStream.txt");
+            System.out.println("파일의 길이 : " + readFile.length());
+            int size = (int) readFile.length();
+            byte[] buffer = new byte[size];
+
+            fin.read(buffer);
+
+            for(int i = 0; i < buffer.length; i++){
+                System.out.println((char) buffer[i]);
+            }
+
         } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {
             if (fin != null){
@@ -51,6 +71,21 @@ public class Application1 {
             }
         }
 
+        System.out.println("===================== try - with - resourse ================================");
+        try(FileInputStream fin2 = new FileInputStream("src/main/java/com/ohgiraffers/section02/stream/testInputStream.txt");){
 
+            File readFile = new File("src/main/java/com/ohgiraffers/section02/stream/testInputStream.txt");
+            System.out.println("파일의 길이 : " + readFile.length());
+            int size = (int) readFile.length();
+            byte[] buffer = new byte[size];
+
+            fin2.read(buffer);
+
+            for(int i = 0; i < buffer.length; i++){
+                System.out.println((char) buffer[i]);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
