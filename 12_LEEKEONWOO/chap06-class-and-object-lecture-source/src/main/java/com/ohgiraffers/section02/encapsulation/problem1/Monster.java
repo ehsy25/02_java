@@ -2,7 +2,7 @@ package com.ohgiraffers.section02.encapsulation.problem1;
 
 public class Monster {
 
-    String name; //맨앞에 (defult) 접근제한자 작성 기본값은 생략
+    String name; //맨앞에 (defult) 접근제한자 작성 기본값 (defult)은 생략
     int hp;
 
     public void setHp(int hp) {
