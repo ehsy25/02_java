@@ -29,7 +29,7 @@ public class Application3 {
             byte[] barr = new byte[]{98,99, 100, 101,102, 10, 103};
             fout.write(barr);
 
-            fout.write(barr, 1, 3);
+            fout.write(barr, 1, 4);
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);

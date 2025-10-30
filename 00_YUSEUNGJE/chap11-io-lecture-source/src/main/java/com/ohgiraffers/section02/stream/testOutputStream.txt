@@ -1,2 +1,2 @@
 abcdef
-gcde
+gcdef
