@@ -18,14 +18,12 @@ public class WildCardFarm {
         farm.getAnimal().cry();
     }
 
-    // 토끼농장의 토끼는 바니이거나 그 후손타입(술취한바니)로 만들어진 토끼농장만
-    // 매개변수로 사용할 수 있다.
+    // 토끼농장의 토끼는 바니이거나 그 후손타입(술취한바니)로 만들어진 토끼농장만 매개변수로 사용할 수 있다.
     public void extendsType(RabbitFarm<? extends Bunny> farm){
         farm.getAnimal().cry();
     }
 
-    // 토끼농장의 토끼는 바니이거나 그 부모타입(Rabbit)으로 만들어진 토끼농장만 매개변수로
-    // 사용할 수 있다.
+    // 토끼농장의 토끼는 바니이거나 그 부모타입(Rabbit)으로 만들어진 토끼농장만 매개변수로 사용할 수 있다.
     public void superType(RabbitFarm<? super Bunny> farm){
         farm.getAnimal().cry();
     }
