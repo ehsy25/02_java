@@ -18,5 +18,14 @@ public class Application2 {
         wildCardFarm.anyType(rabbitFarm1);
         wildCardFarm.anyType(new RabbitFarm<Bunny>(new Bunny()));
         wildCardFarm.anyType(new RabbitFarm<DrunkBunny>(new DrunkBunny()));
+
+//        wildCardFarm.extendsType(new RabbitFarm<Rabbit>(new Rabbit()));
+        wildCardFarm.extendsType(new RabbitFarm<Bunny>(new Bunny()));
+        wildCardFarm.extendsType(new RabbitFarm<DrunkBunny>(new DrunkBunny()));
+
+        wildCardFarm.superType(new RabbitFarm<Rabbit>(new Rabbit()));
+        wildCardFarm.superType(new RabbitFarm<Bunny>(new Bunny()));
+//        wildCardFarm.superType(new RabbitFarm<DrunkBunny>(new DrunkBunny()));
+
     }
 }
