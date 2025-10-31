@@ -6,6 +6,6 @@ public class Application {
 
         // 실행용 클래스
         String result = RandomMaker.tossCoin();
-        System.out.println(result);
+        System.out.println("동전 던지기! 앞면(0) or 뒷면(1)? : " + result );
     }
 }

@@ -5,6 +5,7 @@ public class CookBook extends Book{
     private boolean coupon;
 
     public CookBook() {
+
     }
 
     public CookBook(String title, String author, String publisher, boolean coupon) {
@@ -12,12 +13,7 @@ public class CookBook extends Book{
         this.coupon = coupon;
     }
 
-    @Override
-    public String toString() {
-        return "CookBook{" +
-                "coupon=" + coupon +
-                '}';
-    }
+
 
     public boolean isCoupon() {
         return coupon;
@@ -25,5 +21,11 @@ public class CookBook extends Book{
 
     public void setCoupon(boolean coupon) {
         this.coupon = coupon;
+    }
+
+    @Override
+    public String toString() {
+        return "CookBook[" + super.toString() + "coupon=" + coupon +
+                ']';
     }
 }
