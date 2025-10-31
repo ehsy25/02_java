@@ -4,26 +4,35 @@ import java.io.*;
 
 public class MemberManager {
 
-    public Member[] members = new Member[1];
+    public int count = 0;
+    Member[] members = null;
+    String path = "src/main/java/com/ohgiraffers/io/member/members.ser";
 
     public void readMembers() {
-
+        // 파일 읽어서 출력
         ObjectInputStream objIn = null;
+
+        File file = new File(path);
+        boolean exists = file.exists();
 
         try {
 
-            objIn = new ObjectInputStream(new BufferedInputStream(new FileInputStream("src/main/java/com/ohgiraffers/io/member/members.ser ")));
+            if (exists) {
 
-            while (true) {
-                System.out.println(objIn.readObject());
+                objIn = new ObjectInputStream(new BufferedInputStream(new FileInputStream(path)));
+
+                while (true) {
+                    objIn.readObject();
+                    count++;
+                }
+            } else {
+                file.createNewFile();
             }
 
-        } catch (EOFException e) {
-            System.out.println("다 읽음");
-        } catch (IOException e) {
-            e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            System.out.println("못 찾음");
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            System.out.println("파일 다 읽음");
         } finally {
             if (objIn != null) {
                 try {
@@ -35,21 +44,53 @@ public class MemberManager {
         }
     }
 
-    public void addMember(Member member) {
+    public void addMembers(Member member) {
 
         ObjectOutputStream objOut = null;
-        members[0] = member;
+        ObjectInputStream objIn = null;
+        members = new Member[count+1];
+        int memCount = 0;
 
         try {
-            objOut = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("src/main/java/com/ohgiraffers/io/member/members.ser ")));
 
-            for (int i = 0; i < members.length; i++) {
-                objOut.writeObject(members[i]);
-            }
+                objIn = new ObjectInputStream(new BufferedInputStream(new FileInputStream(path)));
+                objOut = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(path)));
+
+                for (int i = 0; i < members.length; i++) {
+
+                    if (count != 0) {
+                        members[i] = (Member) objIn.readObject();
+                    }
+
+                    if (members[0] == null) {
+                        members[0] = member;
+                        objOut.writeObject(members);
+                        break;
+                    }
+
+                    if (memCount == i) {
+                        members[i+1] = member;
+                        objOut.writeObject(members);
+                    }
+
+                }
+
+
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
         } catch (IOException e) {
+            System.out.println("끝");
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         } finally {
-            if (objOut != null) {
+            if (objIn != null) {
+                try {
+                    objIn.close();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            } else if (objOut != null) {
                 try {
                     objOut.close();
                 } catch (IOException e) {
@@ -57,5 +98,7 @@ public class MemberManager {
                 }
             }
         }
+
+
     }
 }

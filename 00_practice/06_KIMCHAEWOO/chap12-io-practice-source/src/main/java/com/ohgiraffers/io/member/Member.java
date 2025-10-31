@@ -1,11 +1,9 @@
 package com.ohgiraffers.io.member;
 
-import java.io.Serializable;
+import java.io.*;
 
 public class Member implements Serializable {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
     private String userId;
     private String userPwd;
@@ -27,6 +25,7 @@ public class Member implements Serializable {
         this.age = age;
         this.gender = gender;
         this.point = point;
+
     }
     public String getUserId() {
         return userId;
