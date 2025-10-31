@@ -16,29 +16,23 @@ public class Application6 {
          * 치킨 이름을 입력하세요 : 양념     치킨 이름을 입력하세요 : 불닭
          * 양념치킨 배달 가능              불닭치킨은 없는 메뉴입니다.
          * */
-      String[] arr = {"후라이드", "양념", "파닭", "매콤", "치즈", "간장"};
+        String[] arr = {"후라이드", "양념", "파닭", "매콤", "치즈", "간장"};
 
-      Scanner sc = new Scanner(System.in);
-        System.out.println("치킨 이름을 입력하세요 :");
+        Scanner sc = new Scanner(System.in);
+        System.out.print("치킨 이름을 입력하세요 : ");
         String chicken = sc.nextLine();
 
         boolean check = false;
-        for(int i = 0; i < arr.length; i++) {
-            if(arr[i].equals(chicken)){
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i].equals(chicken)) {
                 check = true;
                 break;
             }
         }
-
-        if(check) {
+        if (check) {
             System.out.println(chicken + "치킨 배달 가능");
         } else {
             System.out.println(chicken + "치킨은 없는 메뉴입니다.");
         }
-
-
-
-
-
     }
 }
