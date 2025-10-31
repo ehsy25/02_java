@@ -1,9 +1,10 @@
 package com.lhw.section01.list.run;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Application {
+public class Application3 {
 
     public static void main(String[] args) {
 
@@ -27,11 +28,37 @@ public class Application {
         linkedList.add("grape");
         linkedList.add("lemon");
 
-        System.out.println(linkedList);
+        System.out.println(linkedList); //tostring 오버라이딩
         System.out.println(linkedList.size());
-
+        //저장순서대로 저장
         for ( int i = 0; i < linkedList.size(); i++) {
             System.out.println(linkedList.get(i));
         }
+
+        System.out.println("향상된 for문===========");
+        for (String s: linkedList) {
+            System.out.println(s);
+        }
+
+        System.out.println("Iterator ==========");
+        Iterator<String> iterator = linkedList.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+
+        linkedList.set(0, "PINEAPPLE");
+        System.out.println(linkedList);
+
+        linkedList.clear();
+//        linkedList = (LinkedList) linkedList;
+        linkedList.add("hello");
+        ((LinkedList<String>) linkedList).addFirst("world");
+        System.out.println("linkedList : " + linkedList);
+        ((LinkedList<String>) linkedList).removeFirst();
+        System.out.println("linkedList : " + linkedList);
+        ((LinkedList<String>) linkedList).removeLast();
+        System.out.println("linkedList : " + linkedList);
+
+        System.out.println("linkedList.isEmpty() = " + linkedList.isEmpty());
     }
 }
