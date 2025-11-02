@@ -9,6 +9,7 @@ public class Application1 {
          *
          * -- 출력 예시 --
          * 문자 a의 unicode : 97
+         * 문자 b의 unicode : 98
          * */
 
         char ch1 = 'a';
@@ -18,5 +19,10 @@ public class Application1 {
         char ch2 = 'a';
         int int2 = ch2; // 자동 형 변환 발생
         System.out.println("문자 a의 unicode : " + int2);
+
+        char ch3 = 'b';
+        int int3 = (int)ch3;
+        System.out.println("문자 b의 unicode : " + int3);
+
     }
 }
