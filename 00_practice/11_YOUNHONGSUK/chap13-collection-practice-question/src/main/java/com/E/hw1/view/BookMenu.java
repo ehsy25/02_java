@@ -62,6 +62,9 @@ public class BookMenu {
         System.out.println("enter bNo");
         int n = sc.nextInt();
         System.out.println("enter category");
+        System.out.println("""
+                1 : 인문 / 2 : 자연과학
+                        3 : 의료 / 4 : 기타)""");
         int category = sc.nextInt();
         System.out.println("enter title");
         String title = sc.next();

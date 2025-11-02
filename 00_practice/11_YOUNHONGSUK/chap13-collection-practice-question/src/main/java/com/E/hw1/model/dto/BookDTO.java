@@ -56,9 +56,6 @@ public class BookDTO {
                 ", category=" + category +
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
-                '}' +
-                """ 
-        \n 1 : 인문 / 2 : 자연과학
-        3 : 의료 / 4 : 기타""";
+                '}';
     }
 }
