@@ -17,7 +17,11 @@ public class BookManager {
     }
 
     public void deleteBook(int index){
-        books.remove(index);
+        for(int i = 0 ; i<books.size();i++){
+            if(books.get(i).getbNo() == index){
+                books.remove(i);
+            }
+        }
     }
 
     public int serachBook(String bTitle){
@@ -44,7 +48,7 @@ public class BookManager {
     }
 
     public void displayAll(){
-        if(!books.isEmpty()){
+        if(books.isEmpty()){
             System.out.println("출력할 도서가 없습니다.");
         }
         else{

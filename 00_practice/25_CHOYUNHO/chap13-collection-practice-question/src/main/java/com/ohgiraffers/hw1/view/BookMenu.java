@@ -10,6 +10,8 @@ public class BookMenu {
     BookManager bm;
 
     public BookMenu() {
+        this.bm = new BookManager();
+
     }
 
     public void menu() {
@@ -29,14 +31,15 @@ public class BookMenu {
             sc.nextLine();
             switch (num) {
                 case 1:
+
                     bm.addBook(inputBook());
 
                     break;
                 case 2:
-                    System.out.print("정렬방식을 선택해주세요 (1. 오름차순, 2.내림차순)");
+                    System.out.print("정렬방식을 선택해주세요 (1. 오름차순, 2.내림차순) : ");
                     int sortNum = sc.nextInt();
                     if (sortNum == 1 || sortNum == 2) {
-                        bm.sortedBookList(sortNum);
+                        bm.printBookList(bm.sortedBookList(sortNum));
                     } else {
                         System.out.println("번호를 잘못입력하였습니다.");
                     }
