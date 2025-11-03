@@ -16,6 +16,7 @@ public class Application1 {
          * 양수다.
          * */
         Scanner scanner = new Scanner(System.in);
+
         System.out.print("정수를 하나 입력하세요 : ");
             int a = scanner.nextInt();
             if (a > 0) {

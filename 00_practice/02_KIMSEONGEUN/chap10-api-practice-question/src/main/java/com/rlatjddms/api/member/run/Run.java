@@ -20,8 +20,7 @@ public class Run {
             int height = Integer.parseInt(members[2]);
             int weight = Integer.parseInt(members[3]);
 
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
-            LocalDate birth = LocalDate.parse(members[4], formatter);
+            LocalDate birth = LocalDate.parse(members[4], DateTimeFormatter.ofPattern("yyyyMMdd"));
 
             Member member = new Member(num, name, height, weight, birth);
             System.out.println(member.information());

@@ -17,27 +17,24 @@ public class Application5 {
          * */
         Scanner sc = new Scanner(System.in);
         System.out.print("문자열 : ");
-        String str  = sc.nextLine();
-        System.out.print("문자 :");
+        String str = sc.nextLine();
+        System.out.print("문자 : ");
         char ch = sc.nextLine().charAt(0);
 
         char[] chArr = new char[str.length()];
         int count = 0;
         String strIndex = "";
-        for (int i = 0; i < str.length(); i++) {
+        for(int i = 0; i < str.length(); i++) {
             chArr[i] = str.charAt(i);
 
             if(ch == chArr[i]) {
                 count++;
-                strIndex += i + "";
+                strIndex += i + " ";
             }
-
         }
-        System.out.println(str + "에 " + ch + "가 존재하는 위치(인덱스) : " + strIndex);
+        System.out.print(str + "에 " + ch + "가 존재하는 위치(인덱스) : " + strIndex);
 
         System.out.println();
         System.out.println(ch + " 개수 : " + count);
-
-
     }
 }
