@@ -1,6 +1,6 @@
 package main.java.com.ohgiraffers.section01.polymorphism;
 
-public class Rebbit extends Animal {
+public class Rabbit extends Animal {
     @Override
     public void eat() {
         System.out.println("토끼가 풀을 뜯어 먹고 있습니다.");
