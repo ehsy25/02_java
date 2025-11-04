@@ -1,11 +1,7 @@
 package com.E.hw2.view;
 
 import com.E.hw2.controller.BoardManager;
-import com.E.hw2.model.comparator.AscBoardNo;
-import com.E.hw2.model.comparator.DescBoardNo;
-import com.E.hw2.model.dto.BoardDTO;
 
-import java.util.Comparator;
 import java.util.Scanner;
 
 public class BoardMenu {
@@ -55,35 +51,8 @@ bm.set();
         }
     }
 
-    public void sortSubMenu() {
-        Scanner sc2 = new Scanner(System.in);
+    public void sortSubMenu(){
 
-        while (true) {
-            System.out.println("***** 게시글 정렬 메뉴 *****");
-            System.out.println("1. 글번호순 오름차순 정렬"); // sortList(AscBoardNo())
-            System.out.println("2. 글번호순 내림차순 정렬"); // sortList(DescBoardNo()) [cite: 79]
-            System.out.println("3. 작성날짜순 오름차순 정렬"); // sortList(AscBoardDate()) [cite: 80]
-            System.out.println("4. 작성날짜순 내림차순 정렬"); // sortList(DescBoardDate()) [cite: 81]
-            System.out.println("5. 글제목순 오름차순 정렬"); // sortList(AscBoardTitle()) [cite: 82]
-            System.out.println("6. 글제목순 내림차순 정렬"); // sortList(DescBoardTitle()) [cite: 83]
-            System.out.println("7. mainMenu()메소드로 이동"); // [cite: 84]
-
-            if (!sc2.hasNextInt()) {
-                sc2.nextLine();
-                System.out.println("잘못된 입력입니다. 숫자를 입력해주세요.");
-                continue;
-            }
-            int menu = sc2.nextInt();
-            sc.nextLine();
-
-            Comparator<BoardDTO> comparator = null;
-            switch (menu) {
-                case 1:bm.sortList(new AscBoardNo());
-                break;
-                case 2:bm.sortList(new DescBoardNo());
-                break;
-                
-            }
-        }
     }
+
 }

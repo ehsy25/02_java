@@ -76,4 +76,4 @@ public class BoardManager {
         System.out.println(boardList);
         }
     }
-
+}
