@@ -17,7 +17,7 @@ public class Car {
             System.out.println("주행중엔 경적 X");
         }
     }
-    private boolean isRunning(){
+    protected boolean isRunning(){
         return runningStatus;
 
     }

@@ -14,9 +14,10 @@ public class RandomMaker {
      *
      * */
     public static String tossCoin() {
-        int coinFlip = (int) (Math.random()*2);
 
-        String result = (coinFlip == 0)? "얖면": "뒷면";
+        int coinFlip = (int) (Math.random() * 2);
+
+        String result = (coinFlip == 0)? "앞면": "뒷면";
 
         return result;
 
