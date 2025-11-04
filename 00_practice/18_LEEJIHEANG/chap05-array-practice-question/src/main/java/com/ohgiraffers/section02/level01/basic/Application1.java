@@ -15,31 +15,20 @@ public class Application1 {
          *
          * 단, 출력물의 줄맞춤은 신경쓰지 말고 풀어보세요
          * */
-    int[][] array = new int[3][4];
-    array[0][0] = 1;
-    array[0][1] = 2;
-    array[0][2] = 3;
-    array[0][3] = 4;
-        System.out.print(array[0][0]+" ");
-        System.out.print(array[0][1]+" ");
-        System.out.print(array[0][2]+" ");
-        System.out.println(array[0][3]);
-    array[1][0] = 5;
-    array[1][1] = 6;
-    array[1][2] = 7;
-    array[1][3] = 8;
-        System.out.print(array[1][0]+" ");
-        System.out.print(array[1][1]+" ");
-        System.out.print(array[1][2]+" ");
-        System.out.println(array[1][3]);
-        array[2][0] = 9;
-        array[2][1] = 10;
-        array[2][2] = 11;
-        array[2][3] = 12;
-        System.out.print(array[2][0]+" ");
-        System.out.print(array[2][1]+" ");
-        System.out.print(array[2][2]+" ");
-        System.out.print(array[2][3]);
-    }
+        int iarr[][] = new int[3][4];
 
+        int su = 1;
+        for(int i = 0; i < iarr.length; i++) {
+            for(int j = 0; j < iarr[i].length; j++) {
+                iarr[i][j] = su++;
+            }
+        }
+
+        for(int i = 0; i < iarr.length; i++) {
+            for(int j = 0; j < iarr[i].length; j++) {
+                System.out.print(iarr[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
 }

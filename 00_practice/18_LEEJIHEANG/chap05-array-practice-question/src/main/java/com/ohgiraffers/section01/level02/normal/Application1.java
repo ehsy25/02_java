@@ -11,16 +11,28 @@ public class Application1 {
          * 문자열을 하나 입력하세요 : helloworld
          * 입력하신 문자열 helloworld에서 찾으시는 문자 l은 3개 입니다.
         /* 문자열 클래스에서 제공하는 length(), charAt() */
-    Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         System.out.print("문자열을 하나 입력하세요 : ");
         String str = sc.nextLine();
+        char[] carr = new char[str.length()];
+        //System.out.println(carr[0]);
+        System.out.print("검색할 문자를 입력하세요 : ");
+        char ch = sc.next().charAt(0);
+        char[] carr2 = str.toCharArray();
+        for(int i = 0; i < carr2.length; i++) {
+
+            System.out.println(carr2[i]);
+        }
+
         int count = 0;
-        char[] charray = str.toCharArray();
-        for ( int i = 0; i < charray.length; i++) {
-            if(str.charAt(i) == 'l'){
+
+        for(int i = 0; i < carr2.length; i++) {
+
+            if(carr2[i] == ch) {
                 count++;
             }
         }
-        System.out.println("입력하신 문자열 " + str + "에서 찾으시는 문자 l은 " + count + "개 입니다.");
+
+        System.out.println("입력하신 문자열 " + str + "에서 찾으시는 문자 " + ch + "은" + count + "개 입니다.");
     }
 }
