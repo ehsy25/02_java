@@ -7,9 +7,9 @@ public class PrintName {
 
 
     public void printNames(List<String> names){
-        names.stream().filter(str -> {
-            if(str.length() >= 5){
+        names.stream()
+                .filter(str ->  str.length() >= 5)
+                .forEach(str ->System.out.println(str.toUpperCase()));
             }
-        }).forEach(System.out::println);
     }
-}
+
